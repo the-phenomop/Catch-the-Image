@@ -9,7 +9,7 @@ const routes = require('./routes/routes');
 const errorController = require('./controllers/errorController');
 const User = require('./models/user');
 
-const MONGODB_URI = 'mongodb+srv://pulkit-1234:qhqImfwGvErqGDhq@cluster0-vkrrg.mongodb.net/campus?retryWrites=true&w=majority';
+const MONGODB_URI = 'mongodb+srv://pulkit-1234<Password>@cluster0-vkrrg.mongodb.net/campus?retryWrites=true&w=majority';
 
 const app = express();
 const store = new MongoDBStore({
