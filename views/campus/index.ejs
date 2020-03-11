@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <% if( isAuthenticated && level.number == 21) { %>
+        <div class="image">
+            <img  src="<%= level.imageUrl %>" alt="Level <%= level.number %>">
+        </div>
+    <% } else if(isAuthenticated && level.number!=21) { %>
+        <div class="image">
+            <img  src="<%= level.imageUrl %>" alt="Level <%= level.number %>">
+        </div>
+        
+        <form action="/checkAnswer" method="POST">
+            <input class="input-type" type="text" name="answer" value="">
+            <% if(errorMessage) { %>
+                <div class="errorMessage"><%= errorMessage %></div>
+            <% } %>
+            <li class="main-header__li" id="submit">
+                <button type="submit">Submit</button>
+            </li>
+            
+            <input type="hidden" name="username" value="<%= user.username %>">
+        </form>
+    <% } else {%>
+        <marquee direction="">
+            <p class="caution">Caution: Don't forget your password and username otherwise you maynot be able to play the game and do not share your password with anybody.</p>
+        </marquee>
+        <div class="campus-heading">Catch the Image</div>
+    <% } %>
+    
+    <%- include('../includes/end.ejs') %>

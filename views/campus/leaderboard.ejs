@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    
+    <% if (users.length > 0 ) { %>
+        <% let n = users.length %>
+        <% for (var i=0; i < users.length; i++ ) { %>
+            <% for (var j=0; j < n-1; j++ ) { %>
+                <% if(users[j].level < users[j+1].level) { 
+                    var temp = users[j];
+                    users[j] = users[j+1];
+                    users[j+1] = temp;
+                    } else if(users[j].level == users[j+1].level && users[j].time > users[j+1].time) {
+                    var temp = users[j];
+                    users[j] = users[j+1];
+                    users[j+1] = temp;
+                    } %>
+            <% } %>
+            <% n = n-1 %>
+        <% } %>
+        <div class="leader">
+            <span class="leader1">Rank</span>
+            <span class="leader2">Username</span>
+            <span class="leader1">Level</span>
+        </div>
+        <% for(var i=0; i< users.length; i++) { %> 
+            <div class="divleader">
+                <span class="l1"><%= i+1 %></span>
+                <span class="l2"><%= users[i].username %></span>
+                <span class="l1"><%= users[i].level %></span>
+            </div>
+            
+        <% } %>
+    <% } %>
+
+
+
+
+    <%- include('../includes/end.ejs') %>

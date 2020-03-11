@@ -1,0 +1,23 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <% if(errorMessage) { %>
+        <div class="errorMessage"><%= errorMessage %></div>
+    <% } %>
+    <form class="form-control" action="/signup" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="<%= oldInput.username %>" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="<%= oldInput.email %>" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <button class="loginsignup" type="submit">Sign up</button>
+    </form>
+    
+<%- include('../includes/end.ejs') %>

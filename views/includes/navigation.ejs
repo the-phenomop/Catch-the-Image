@@ -1,0 +1,38 @@
+<div class="main-header">
+    <nav class="main-header__navbar">
+        <ul class="main-header__ul">
+            <li class="main-header__li">
+                <a class="<%= path=='/' ? 'active' : '' %>" href="/">Home</a>
+            </li>
+            <li class="main-header__li">
+                <a class="<%= path=='/help' ? 'active' : '' %>" href="/help">Help</a>
+            </li>
+            <li class="main-header__li">
+                <a class="<%= path=='/leaderboard' ? 'active' : '' %>" href="leaderboard">Leaderboard</a>
+            </li>
+            <% if (!isAuthenticated) { %>
+                <li class="main-header__li">
+                    <a class="<%= path=='/login' ? 'active' : '' %>" href="/login">Login</a>
+                </li>
+                <li class="main-header__li">
+                    <a class="<%= path=='/signup' ? 'active' : '' %>" href="/signup">Sign up</a>
+                </li>
+            <% } %>
+
+            <% if (isAuthenticated) { %>
+                <li class="main-header__li">
+                    <a class="<%= path=='/levels' ? 'active' : '' %>" href="/levels">Levels</a>
+                </li>
+                <li class="main-header__li">
+                    <form action="/logout" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+        
+        
+
+        
+    </nav>
+</div>

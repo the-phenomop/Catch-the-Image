@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <% if(isAuthenticated) { %>
+        <p class="errorMessage"> You can view only the levels that you have cleared or you are currently at.</p>
+        <div class="levels">
+            <ul class="levels__ul">
+                <% for(var i=1; i<=20; i++) { %>
+                    <% if (i<=level) { %>
+                        <li class="levels__li">
+                            <a href="/levels/<%= i %>">Level <%= i %></a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+        
+    <% } else { %>
+        <h1>You first need to login to view this page.</h1>
+    <% } %>
+
+    <%- include('../includes/end.ejs') %>
